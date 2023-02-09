@@ -5,8 +5,9 @@ dotenv.config();
 import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import config from './config';
 import db from './db';
+import routes from './routes';
+import config from './config';
 
 // express application.
 const app: Application = express();
@@ -19,5 +20,7 @@ app.use(morgan('dev'));
 
 // connect mongodb.
 db();
+
+app.use('/api/v1', routes);
 
 export default app;
