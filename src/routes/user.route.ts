@@ -1,8 +1,8 @@
 import { Router, IRouter } from 'express';
-import UserRoute from './user.route';
+import { register } from '../controllers/user.controller';
 
 const router: IRouter = Router();
 
-router.use(UserRoute);
+router.post('/register', register);
 
 export default router;
