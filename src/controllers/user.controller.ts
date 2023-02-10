@@ -1,14 +1,15 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction as Next } from 'express';
 import bcrypt from 'bcryptjs';
 import * as httpRes from '../helpers/http-response.helper';
 import User from '../db/models/user.model';
 
-type TController = (req: Request, res: Response) => Promise<void>;
+type TController = (req: Request, res: Response, next?: Next) => Promise<void>;
 
 /**
  * Router controller for user registration.
  * @param {Request} req
  * @param {Response} res
+ * @param {Next} next
  */
 export const register: TController = async (req, res) => {
   try {
