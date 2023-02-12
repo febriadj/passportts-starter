@@ -3,7 +3,7 @@ import { model, Schema, Document } from 'mongoose';
 interface IUserDoc extends Document {
   _id?: Schema.Types.ObjectId;
   username: string;
-  email: string;
+  email: string | null;
   password: string | null;
   providerId: string | null;
   provider: string;
@@ -25,9 +25,8 @@ const UserSchema = new Schema<IUserDoc>(
     email: {
       type: Schema.Types.String,
       trim: true,
-      required: true,
       unique: true,
-      default: '',
+      default: null,
     },
     password: {
       type: Schema.Types.String,
