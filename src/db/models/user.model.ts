@@ -1,12 +1,16 @@
 import { model, Schema, Document } from 'mongoose';
 
-interface IUserDoc extends Document {
+export interface IProviders {
+  providerId: string;
+  provider: string;
+}
+
+export interface IUserDoc extends Document {
   _id?: Schema.Types.ObjectId;
   username: string;
   email: string | null;
   password: string | null;
-  providerId: string | null;
-  provider: string;
+  providers: Array<IProviders> | Array<undefined>;
   createdAt?: Schema.Types.Date;
   updatedAt?: Schema.Types.Date;
 }
@@ -28,19 +32,9 @@ const UserSchema = new Schema<IUserDoc>(
       unique: true,
       default: null,
     },
-    password: {
-      type: Schema.Types.String,
-      default: null,
-    },
-    providerId: {
-      type: Schema.Types.String,
-      unique: true,
-      default: null,
-    },
-    provider: {
-      type: Schema.Types.String,
-      required: true,
-      default: 'local',
+    providers: {
+      type: Schema.Types.Array,
+      default: [],
     },
   },
   {

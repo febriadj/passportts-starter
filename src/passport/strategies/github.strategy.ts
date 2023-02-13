@@ -22,11 +22,15 @@ const strategy = new GithubStrategy(
     done: TDone
   ): Promise<void> => {
     try {
-      const user = await User.findOne({ providerId: profile.id });
+      const { id, provider, username } = profile;
+
+      // find user document by providerId and provider name.
+      const user = await User.findOne({
+        'providers.providerId': id,
+        'providers.provider': provider,
+      });
 
       if (!user) {
-        const { id, provider, username } = profile;
-
         // generate an unique id number for username suffix.
         const suffix = await uniqueid(6, {
           uppercase: false,
@@ -35,8 +39,12 @@ const strategy = new GithubStrategy(
 
         const createUser = await new User({
           username: `${username}-${suffix}`,
-          provider,
-          providerId: id,
+          providers: [
+            {
+              providerId: id,
+              provider,
+            },
+          ],
         }).save();
 
         done(null, createUser, {
