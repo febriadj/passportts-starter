@@ -2,6 +2,7 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import local from './strategies/local.strategy';
 import github from './strategies/github.strategy';
+import google from './strategies/google.strategy';
 
 const strategies = (): void => {
   interface IUser {
@@ -13,6 +14,7 @@ const strategies = (): void => {
 
   passport.use(local);
   passport.use(github);
+  passport.use(google);
 };
 
 export default strategies;
