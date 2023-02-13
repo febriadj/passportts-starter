@@ -1,7 +1,7 @@
 {
   "name": "passportts-starter",
   "version": "1.0.0",
-  "description": "Session authentication system using Passport.js in Node.js (TypeScript) app.",
+  "description": "Server-side application for authentication system using Passport with Node.js and TypeScript.",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
