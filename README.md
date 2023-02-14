@@ -2,7 +2,7 @@
 
 The main purpose of this repository is to demonstrate local and oauth authentication systems using **@passport** and workflow for writing Node.js code in TypeScript.
 
-## Get Started
+## Getting Started
 
 ### Installation
 
@@ -19,7 +19,7 @@ $ mv .env.example .env
 Rename the `.env.example` file to `.env` and complete the required "environment variables".
 
 ```bash
-$ npm install
+$ npm install && npm run prepare
 ```
 
 ```bash
@@ -47,17 +47,13 @@ Set up the server basic configuration in `./src/config.ts` file.
 ### Reset Git History
 
 ```bash
-$ rm -rf .git/ && rm -rf .husky/
+$ rm -rf .git
 ```
 
-Remove `.git/` and `.husky/` folders before reinitializing.
+Remove `.git` folders before reinitializing.
 
 ```bash
-$ git init && npx husky install
-```
-
-```bash
-$ npx husky add .husky/commit-msg 'npx commitlint --edit "$1"'
+$ git init && npm run prepare
 ```
 
 Reinitialize **Git** and **@husky**.
