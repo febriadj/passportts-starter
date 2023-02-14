@@ -4,9 +4,9 @@
   "description": "Server-side application for authentication system using Passport with Node.js and TypeScript.",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-ts": "tsc -w",
-    "build-ts": "tsc",
+    "prepare": "husky install",
+    "watch": "tsc -w",
+    "build": "tsc",
     "start": "npm run build-ts && node build/index.js",
     "serve": "nodemon src/index.ts"
   },
